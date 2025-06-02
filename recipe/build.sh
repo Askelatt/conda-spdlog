@@ -1,9 +1,12 @@
 #!/bin/bash
-set -ex
 
-mkdir build
+mkdir -p build
 cd build
 
-cmake .. -DCMAKE_INSTALL_PREFIX=$PREFIX -DSPDLOG_FMT_EXTERNAL=ON
+cmake .. \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCMAKE_BUILD_TYPE=Release \
+    -DSPDLOG_FMT_EXTERNAL=OFF
+
 make -j$(nproc)
 make install
